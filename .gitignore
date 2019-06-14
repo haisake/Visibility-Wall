@@ -15,3 +15,6 @@ Report Queries/OLD/
 Report Queries/Import Queries - QPS/
 Report Queries/Build Indicator Tables/Old Versions/
 SourceFiles/OLD/
+*.csv
+*.xlsx
+Thumbs.db
