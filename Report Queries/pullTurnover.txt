@@ -1,0 +1,6 @@
+SELECT FiscalPeriodLong
+, TurnoverType
+, SUM(TurnoverVolume) as 'TurnoverVolume' 
+FROM [DSSI].[dbo].[RH_VisibilityWall_EE_Turnover]
+GROUP BY FiscalPeriodLong
+, TurnoverType

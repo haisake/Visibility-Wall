@@ -1,0 +1,2 @@
+SELECT distinct AgeGroupName, NumFallsCases,TimeFrameLabel 
+FROM [DSSI].[dbo].[RH_VisibilityWall_QPS_FallsByAge]

@@ -1,0 +1,46 @@
+SELECT distinct X.[indicatorID]
+, X.[facility]
+, X.[entity_group]
+, X.[TimeFrame]
+, X.[TimeFrameLabel]
+, X.[TimeFrameType]
+, X.[IndicatorName]
+, CASE WHEN B.indicatorID is not NULL THEN NULL
+       ELSE X.[Numerator]
+END as 'Numerator'
+, CASE WHEN B.indicatorID is not NULL THEN NULL
+       ELSE X.[Denominator]
+END as 'Denominator'
+, CASE WHEN B.indicatorID is not NULL THEN NULL
+       ELSE X.[Value]
+END as 'Value'
+, X.[DesiredDirection]
+, X.[Format]
+, X.[Target]
+, X.[DataSource]
+, X.[IsOverall]
+, T.ChartType, T.V_ChartTitle, T.V_ScaleFactor, T.MYVCHCategory
+FROM DSSI.[dbo].[RH_VisibilityWall_IndicatorTableAll] as X
+LEFT JOIN DSSI.[dbo].[RH_VisibilityWall_IndicatorChartType] as T
+ON X.[indicatorName]=T.[indicatorName]
+AND X.Facility=T.Facility
+AND X.entity_Group=T.Entity_Group
+INNER JOIN DSSI.[dbo].[RH_VisibilityWall_IndicatorChartFilters] as F
+ON X.[indicatorName]=F.[indicatorName]
+AND X.Facility=F.Facility
+AND X.Entity_Group=F.Entity_Group
+AND X.TimeFrame >=F.FirstDate
+LEFT JOIN [DSSI].[dbo].[RH_VisibilityWall_BaselineIgnore] as B
+ON X.[indicatorName]=B.[indicatorName]
+AND X.Facility=B.Facility
+AND X.entity_Group=B.Entity_Group
+AND X.[timeframe]=B.[TimeFrame]
+ORDER BY X.[indicatorName] ASC, X.IsOverall DESC, X.Entity_Group ASC, X.TimeFrame ASC, T.MYVCHCategory ASC
+
+
+
+
+
+
+	 
+

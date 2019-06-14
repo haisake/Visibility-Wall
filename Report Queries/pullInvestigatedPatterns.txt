@@ -1,0 +1,1 @@
+SELECT * FROM DSSI.[dbo].[RH_VisibilityWall_InvestigatedPatterns]

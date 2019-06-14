@@ -1,0 +1,1 @@
+SELECT distinct * FROM DSSI.dbo.RH_VisibilityWall_AF_ORWaitLength

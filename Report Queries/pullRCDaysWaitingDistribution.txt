@@ -1,0 +1,5 @@
+SELECT W.* 
+FROM DSSI.dbo.RH_VisibilityWall_AF_RCCurrWait as W
+INNER JOIN (SELECT distinct TOP 208 ThursdayWkEnd FROM DSSI.dbo.RH_VisibilityWall_AF_RCCurrWait ORDER BY ThursdayWkEnd DESC) as D
+ON W.ThursdayWkEnd=D.ThursdayWkEnd
+ORDER BY W.ThursdayWkEnd ASC, W.[ORDER] DESC
